@@ -39,12 +39,12 @@ export default function HomePage() {
       <h1 className="text-3xl font-bold mb-2">Rate My Coach</h1>
       <p className="text-gray-400 mb-6">Find and review personal trainers & fitness coaches</p>
 
-      <div className="flex gap-2 mb-8">
+      <div className="flex flex-wrap gap-2 mb-8">
         {DIVISIONS.map((d) => (
           <button
             key={d.value}
             onClick={() => setDivision(d.value)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               division === d.value
                 ? 'bg-orange-500 text-white'
                 : 'bg-gray-800 text-gray-300 hover:bg-gray-700'

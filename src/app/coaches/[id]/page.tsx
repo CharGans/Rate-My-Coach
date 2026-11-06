@@ -27,13 +27,13 @@ export default async function CoachPage({ params }: { params: { id: string } }) 
   const alreadyReviewed = reviews?.some((r: Review) => r.user_id === user?.id)
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10">
+    <main className="max-w-3xl mx-auto px-4 py-6 sm:py-10">
       {/* Coach header */}
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-4 mb-6">
         {coach.avatar_url ? (
-          <img src={coach.avatar_url} alt={coach.name} className="w-16 h-16 rounded-full object-cover" />
+          <img src={coach.avatar_url} alt={coach.name} className="w-16 h-16 rounded-full object-cover shrink-0" />
         ) : (
-          <div className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center text-2xl font-bold">
+          <div className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center text-2xl font-bold shrink-0">
             {coach.name[0]}
           </div>
         )}

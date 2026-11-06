@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description: 'Find and review personal trainers and fitness coaches',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">

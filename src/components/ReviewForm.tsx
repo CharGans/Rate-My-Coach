@@ -36,7 +36,7 @@ export default function ReviewForm({ coachId, userId }: { coachId: string; userI
     <form onSubmit={handleSubmit} className="bg-gray-900 rounded-xl p-5 flex flex-col gap-4">
       <h3 className="font-semibold text-lg">Leave a Review</h3>
 
-      <div className="flex gap-1">
+      <div className="flex gap-2">
         {[1, 2, 3, 4, 5].map((star) => (
           <button
             key={star}
@@ -44,7 +44,7 @@ export default function ReviewForm({ coachId, userId }: { coachId: string; userI
             onClick={() => setRating(star)}
             onMouseEnter={() => setHovered(star)}
             onMouseLeave={() => setHovered(0)}
-            className={`text-2xl transition-colors ${star <= (hovered || rating) ? 'text-orange-400' : 'text-gray-600'}`}
+            className={`text-3xl p-1 transition-colors ${star <= (hovered || rating) ? 'text-orange-400' : 'text-gray-600'}`}
           >
             ★
           </button>
@@ -53,11 +53,11 @@ export default function ReviewForm({ coachId, userId }: { coachId: string; userI
 
       <textarea
         required
-        rows={3}
+        rows={4}
         placeholder="Share your experience with this coach..."
         value={body}
         onChange={(e) => setBody(e.target.value)}
-        className="bg-gray-800 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+        className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500 resize-none"
       />
 
       {error && <p className="text-red-400 text-sm">{error}</p>}
@@ -65,7 +65,7 @@ export default function ReviewForm({ coachId, userId }: { coachId: string; userI
       <button
         type="submit"
         disabled={loading}
-        className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-lg py-2.5 font-semibold transition-colors"
+        className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-lg py-3 font-semibold transition-colors text-base"
       >
         {loading ? 'Submitting...' : 'Submit Review'}
       </button>

@@ -40,8 +40,8 @@ export default function AuthPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-sm bg-gray-900 rounded-2xl p-8">
+    <main className="min-h-screen flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-sm bg-gray-900 rounded-2xl p-6 sm:p-8">
         <h1 className="text-2xl font-bold mb-6">{mode === 'login' ? 'Sign In' : 'Create Account'}</h1>
 
         {message && <p className="text-green-400 text-sm mb-4">{message}</p>}
@@ -54,7 +54,7 @@ export default function AuthPage() {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="bg-gray-800 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-orange-500"
+              className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500"
             />
           )}
           <input
@@ -63,7 +63,7 @@ export default function AuthPage() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="bg-gray-800 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-orange-500"
+            className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500"
           />
           <input
             required
@@ -71,12 +71,12 @@ export default function AuthPage() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="bg-gray-800 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-orange-500"
+            className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500"
           />
           <button
             type="submit"
             disabled={loading}
-            className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-lg py-2.5 font-semibold transition-colors"
+            className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-lg py-3 font-semibold transition-colors text-base"
           >
             {loading ? 'Loading...' : mode === 'login' ? 'Sign In' : 'Sign Up'}
           </button>

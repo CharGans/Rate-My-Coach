@@ -25,16 +25,16 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="border-b border-gray-800 px-4 py-3">
+    <nav className="border-b border-gray-800 px-4 py-4">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
         <Link href="/" className="font-bold text-lg text-orange-400">Rate My Coach</Link>
         <div className="flex items-center gap-4 text-sm">
           {user ? (
-            <button onClick={signOut} className="text-gray-400 hover:text-white transition-colors">
+            <button onClick={signOut} className="text-gray-400 hover:text-white transition-colors py-1 px-2">
               Sign Out
             </button>
           ) : (
-            <Link href="/auth" className="bg-orange-500 hover:bg-orange-600 px-4 py-1.5 rounded-full font-medium transition-colors">
+            <Link href="/auth" className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full font-medium transition-colors">
               Sign In
             </Link>
           )}
