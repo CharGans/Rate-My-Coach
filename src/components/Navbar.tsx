@@ -30,9 +30,17 @@ export default function Navbar() {
         <Link href="/" className="font-bold text-lg text-orange-400">Rate My Coach</Link>
         <div className="flex items-center gap-4 text-sm">
           {user ? (
-            <button onClick={signOut} className="text-gray-400 hover:text-white transition-colors py-1 px-2">
-              Sign Out
-            </button>
+            <>
+              <Link href="/coaches/new" className="text-gray-300 hover:text-white transition-colors">
+                + Add Coach
+              </Link>
+              <Link href="/profile" className="text-gray-300 hover:text-white transition-colors">
+                Profile
+              </Link>
+              <button onClick={signOut} className="text-gray-400 hover:text-white transition-colors py-1 px-2">
+                Sign Out
+              </button>
+            </>
           ) : (
             <Link href="/auth" className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full font-medium transition-colors">
               Sign In

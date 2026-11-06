@@ -15,6 +15,7 @@ const DIVISIONS: { label: string; value: Division | 'all' }[] = [
 export default function HomePage() {
   const [coaches, setCoaches] = useState<Coach[]>([])
   const [division, setDivision] = useState<Division | 'all'>('all')
+  const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -26,18 +27,27 @@ export default function HomePage() {
         .order('avg_rating', { ascending: false })
 
       if (division !== 'all') query = query.eq('division', division)
+      if (search.trim()) query = query.ilike('name', `%${search.trim()}%`)
 
       const { data } = await query
       setCoaches(data ?? [])
       setLoading(false)
     }
     load()
-  }, [division])
+  }, [division, search])
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-2">Rate My Coach</h1>
       <p className="text-gray-400 mb-6">Find and review personal trainers & fitness coaches</p>
+
+      <input
+        type="search"
+        placeholder="Search coaches..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500 mb-4"
+      />
 
       <div className="flex flex-wrap gap-2 mb-8">
         {DIVISIONS.map((d) => (

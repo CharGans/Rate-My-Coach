@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import ReviewForm from '@/components/ReviewForm'
+import ReviewsList from '@/components/ReviewsList'
 import type { Coach, Review } from '@/lib/types'
 
 async function getServerSupabase() {
@@ -69,18 +70,11 @@ export default async function CoachPage({ params }: { params: { id: string } }) 
       {!reviews?.length ? (
         <p className="text-gray-500">No reviews yet. Be the first!</p>
       ) : (
-        <div className="flex flex-col gap-4">
-          {reviews.map((review: Review) => (
-            <div key={review.id} className="bg-gray-900 rounded-xl p-5">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-medium text-sm">{review.profiles?.username ?? 'Anonymous'}</span>
-                <span className="text-orange-400 text-sm">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span>
-              </div>
-              <p className="text-gray-300 text-sm">{review.body}</p>
-              <p className="text-gray-600 text-xs mt-2">{new Date(review.created_at).toLocaleDateString()}</p>
-            </div>
-          ))}
-        </div>
+        <ReviewsList
+          reviews={reviews as Review[]}
+          currentUserId={user?.id ?? null}
+          coachId={coach.id}
+        />
       )}
     </main>
   )
