@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
 interface Props {
@@ -12,7 +11,6 @@ interface Props {
 }
 
 export default function ReviewForm({ coachId, userId, existing, onCancel }: Props) {
-  const router = useRouter()
   const [rating, setRating] = useState(existing?.rating ?? 0)
   const [hovered, setHovered] = useState(0)
   const [body, setBody] = useState(existing?.body ?? '')
@@ -44,14 +42,14 @@ export default function ReviewForm({ coachId, userId, existing, onCancel }: Prop
       }
     }
 
-    router.refresh()
+    window.location.reload()
     onCancel?.()
     setLoading(false)
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-900 rounded-xl p-5 flex flex-col gap-4">
-      <h3 className="font-semibold text-lg">{isEdit ? 'Edit Review' : 'Leave a Review'}</h3>
+    <form onSubmit={handleSubmit} className="bg-cream border border-brown-border rounded-xl p-5 flex flex-col gap-4">
+      <h3 className="font-semibold text-lg text-brown">{isEdit ? 'Edit Review' : 'Leave a Review'}</h3>
 
       <div className="flex gap-2">
         {[1, 2, 3, 4, 5].map((star) => (
@@ -61,7 +59,7 @@ export default function ReviewForm({ coachId, userId, existing, onCancel }: Prop
             onClick={() => setRating(star)}
             onMouseEnter={() => setHovered(star)}
             onMouseLeave={() => setHovered(0)}
-            className={`text-3xl p-1 transition-colors ${star <= (hovered || rating) ? 'text-orange-400' : 'text-gray-600'}`}
+            className={`text-3xl p-1 transition-colors ${star <= (hovered || rating) ? 'text-violet' : 'text-lilac'}`}
           >
             ★
           </button>
@@ -74,16 +72,16 @@ export default function ReviewForm({ coachId, userId, existing, onCancel }: Prop
         placeholder="Share your experience with this coach..."
         value={body}
         onChange={(e) => setBody(e.target.value)}
-        className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+        className="bg-lilac-light border border-brown-border rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-lilac text-brown placeholder:text-brown-light resize-none"
       />
 
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
 
       <div className="flex gap-3">
         <button
           type="submit"
           disabled={loading}
-          className="flex-1 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-lg py-3 font-semibold transition-colors text-base"
+          className="flex-1 bg-violet hover:bg-violet-hover disabled:opacity-50 text-cream rounded-lg py-3 font-semibold transition-colors text-base"
         >
           {loading ? 'Saving...' : isEdit ? 'Save Changes' : 'Submit Review'}
         </button>
@@ -91,7 +89,7 @@ export default function ReviewForm({ coachId, userId, existing, onCancel }: Prop
           <button
             type="button"
             onClick={onCancel}
-            className="px-5 bg-gray-800 hover:bg-gray-700 rounded-lg py-3 font-semibold transition-colors"
+            className="px-5 bg-lilac hover:bg-lilac-dark text-cream rounded-lg py-3 font-semibold transition-colors"
           >
             Cancel
           </button>

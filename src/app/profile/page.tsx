@@ -42,47 +42,45 @@ export default function ProfilePage() {
     load()
   }, [router])
 
-  if (loading) return <main className="max-w-2xl mx-auto px-4 py-8"><p className="text-gray-500">Loading...</p></main>
+  if (loading) return <main className="max-w-2xl mx-auto px-4 py-8"><p className="text-slate-400">Loading...</p></main>
 
   return (
     <main className="max-w-2xl mx-auto px-4 py-8">
-      {/* Profile header */}
       <div className="flex items-center gap-4 mb-8">
         {profile?.avatar_url ? (
           <img src={profile.avatar_url} alt={profile.username} className="w-16 h-16 rounded-full object-cover shrink-0" />
         ) : (
-          <div className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center text-2xl font-bold shrink-0">
+          <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold shrink-0">
             {profile?.username?.[0]?.toUpperCase()}
           </div>
         )}
         <div>
-          <h1 className="text-2xl font-bold">{profile?.username}</h1>
-          <p className="text-gray-400 text-sm">
+          <h1 className="text-2xl font-bold text-slate-900">{profile?.username}</h1>
+          <p className="text-slate-500 text-sm">
             Member since {profile ? new Date(profile.created_at).toLocaleDateString() : ''}
           </p>
-          <p className="text-gray-400 text-sm">{reviews.length} review{reviews.length !== 1 ? 's' : ''}</p>
+          <p className="text-slate-500 text-sm">{reviews.length} review{reviews.length !== 1 ? 's' : ''}</p>
         </div>
       </div>
 
-      {/* Reviews */}
-      <h2 className="text-xl font-semibold mb-4">Your Reviews</h2>
+      <h2 className="text-xl font-semibold mb-4 text-slate-900">Your Reviews</h2>
       {reviews.length === 0 ? (
-        <p className="text-gray-500">You haven't reviewed any coaches yet. <Link href="/" className="text-orange-400 hover:underline">Browse coaches</Link></p>
+        <p className="text-slate-400">You haven't reviewed any coaches yet. <Link href="/" className="text-blue-600 hover:underline">Browse coaches</Link></p>
       ) : (
         <div className="flex flex-col gap-4">
           {reviews.map((review) => (
             <Link
               key={review.id}
               href={`/coaches/${review.coaches.id}`}
-              className="bg-gray-900 rounded-xl p-5 hover:bg-gray-800 transition-colors"
+              className="bg-slate-200 border border-slate-300 rounded-xl p-5 hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="font-medium">{review.coaches.name}</span>
-                <span className="text-orange-400 text-sm">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span>
+                <span className="font-medium text-slate-900">{review.coaches.name}</span>
+                <span className="text-blue-600 text-sm">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span>
               </div>
-              <p className="text-xs text-gray-400 capitalize mb-2">{review.coaches.division}</p>
-              <p className="text-gray-300 text-sm">{review.body}</p>
-              <p className="text-gray-600 text-xs mt-2">{new Date(review.created_at).toLocaleDateString()}</p>
+              <p className="text-xs text-slate-400 capitalize mb-2">{review.coaches.division}</p>
+              <p className="text-slate-600 text-sm">{review.body}</p>
+              <p className="text-slate-400 text-xs mt-2">{new Date(review.created_at).toLocaleDateString()}</p>
             </Link>
           ))}
         </div>

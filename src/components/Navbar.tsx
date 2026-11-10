@@ -25,24 +25,24 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="border-b border-gray-800 px-4 py-4">
+    <nav className="border-b border-brown-border bg-cream px-4 py-4">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
-        <Link href="/" className="font-bold text-lg text-orange-400">Rate My Coach</Link>
+        <Link href="/" className="font-bold text-lg text-violet">Rate My Coach</Link>
         <div className="flex items-center gap-4 text-sm">
           {user ? (
             <>
-              <Link href="/coaches/new" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="/coaches/new" className="text-brown-light hover:text-brown transition-colors">
                 + Add Coach
               </Link>
-              <Link href="/profile" className="text-gray-300 hover:text-white transition-colors">
+              <Link href="/profile" className="text-brown-light hover:text-brown transition-colors">
                 Profile
               </Link>
-              <button onClick={signOut} className="text-gray-400 hover:text-white transition-colors py-1 px-2">
+              <button onClick={signOut} className="text-brown-light hover:text-brown transition-colors py-1 px-2">
                 Sign Out
               </button>
             </>
           ) : (
-            <Link href="/auth" className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full font-medium transition-colors">
+            <Link href="/auth" className="bg-violet hover:bg-violet-hover text-cream px-4 py-2 rounded-full font-medium transition-colors">
               Sign In
             </Link>
           )}

@@ -65,18 +65,17 @@ export default function NewCoachPage() {
 
   return (
     <main className="max-w-lg mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Add a Coach</h1>
+      <h1 className="text-2xl font-bold mb-6 text-slate-900">Add a Coach</h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        {/* Avatar upload */}
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-gray-800 overflow-hidden shrink-0 flex items-center justify-center text-gray-500">
+          <div className="w-16 h-16 rounded-full bg-slate-300 overflow-hidden shrink-0 flex items-center justify-center text-slate-500">
             {preview
               ? <img src={preview} alt="preview" className="w-full h-full object-cover" />
               : <span className="text-2xl">+</span>
             }
           </div>
-          <label className="cursor-pointer text-sm text-orange-400 hover:underline">
+          <label className="cursor-pointer text-sm text-blue-600 hover:underline">
             Upload photo
             <input type="file" accept="image/*" onChange={handleAvatarChange} className="hidden" />
           </label>
@@ -87,13 +86,13 @@ export default function NewCoachPage() {
           placeholder="Coach name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500"
+          className="bg-slate-200 border border-slate-300 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 placeholder:text-slate-400"
         />
 
         <select
           value={division}
           onChange={(e) => setDivision(e.target.value as Division)}
-          className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500 capitalize"
+          className="bg-slate-200 border border-slate-300 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 capitalize"
         >
           {DIVISIONS.map((d) => (
             <option key={d} value={d} className="capitalize">{d.charAt(0).toUpperCase() + d.slice(1)}</option>
@@ -105,15 +104,15 @@ export default function NewCoachPage() {
           placeholder="Bio (optional)"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
-          className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+          className="bg-slate-200 border border-slate-300 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 placeholder:text-slate-400 resize-none"
         />
 
-        {error && <p className="text-red-400 text-sm">{error}</p>}
+        {error && <p className="text-red-500 text-sm">{error}</p>}
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-lg py-3 font-semibold transition-colors"
+          className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-lg py-3 font-semibold transition-colors"
         >
           {loading ? 'Saving...' : 'Add Coach'}
         </button>
