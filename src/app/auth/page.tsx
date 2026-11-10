@@ -41,11 +41,11 @@ export default function AuthPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-4 py-8">
-      <div className="w-full max-w-sm bg-gray-900 rounded-2xl p-6 sm:p-8">
-        <h1 className="text-2xl font-bold mb-6">{mode === 'login' ? 'Sign In' : 'Create Account'}</h1>
+      <div className="w-full max-w-sm bg-cream border border-brown-border rounded-2xl p-6 sm:p-8">
+        <h1 className="text-2xl font-bold mb-6 text-brown">{mode === 'login' ? 'Sign In' : 'Create Account'}</h1>
 
-        {message && <p className="text-green-400 text-sm mb-4">{message}</p>}
-        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+        {message && <p className="text-green-600 text-sm mb-4">{message}</p>}
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {mode === 'signup' && (
@@ -54,7 +54,7 @@ export default function AuthPage() {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500"
+              className="bg-lilac-light border border-brown-border rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-lilac text-brown placeholder:text-brown-light"
             />
           )}
           <input
@@ -63,7 +63,7 @@ export default function AuthPage() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500"
+            className="bg-lilac-light border border-brown-border rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-lilac text-brown placeholder:text-brown-light"
           />
           <input
             required
@@ -71,22 +71,22 @@ export default function AuthPage() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="bg-gray-800 rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-orange-500"
+            className="bg-lilac-light border border-brown-border rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-lilac text-brown placeholder:text-brown-light"
           />
           <button
             type="submit"
             disabled={loading}
-            className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 rounded-lg py-3 font-semibold transition-colors text-base"
+            className="bg-violet hover:bg-violet-hover disabled:opacity-50 text-cream rounded-lg py-3 font-semibold transition-colors text-base"
           >
             {loading ? 'Loading...' : mode === 'login' ? 'Sign In' : 'Sign Up'}
           </button>
         </form>
 
-        <p className="text-sm text-gray-400 mt-4 text-center">
+        <p className="text-sm text-brown-light mt-4 text-center">
           {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}{' '}
           <button
             onClick={() => { setMode(mode === 'login' ? 'signup' : 'login'); setError(null) }}
-            className="text-orange-400 hover:underline"
+            className="text-violet hover:underline"
           >
             {mode === 'login' ? 'Sign Up' : 'Sign In'}
           </button>

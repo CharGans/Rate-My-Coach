@@ -41,7 +41,7 @@ begin
     avg_rating = (select avg(rating) from reviews where coach_id = coalesce(new.coach_id, old.coach_id)),
     review_count = (select count(*) from reviews where coach_id = coalesce(new.coach_id, old.coach_id))
   where id = coalesce(new.coach_id, old.coach_id);
-  return new;
+  return coalesce(new, old);
 end;
 $$;
 
