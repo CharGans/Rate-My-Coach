@@ -25,18 +25,19 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="border-b border-brown-border bg-cream px-4 py-4">
+    <nav className="border-b border-brown-border bg-lilac px-4 py-4">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
-        <Link href="/" className="font-bold text-lg text-violet">Rate My Coach</Link>
-        <div className="flex items-center gap-4 text-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-violet flex items-center justify-center text-cream font-bold text-sm">V</div>
+          <Link href="/" className="font-bold text-lg text-brown">Vetta</Link>
+        </div>
+        <div className="flex items-center gap-5 text-sm">
+          <Link href="/" className="text-brown-light hover:text-brown transition-colors font-medium">Home</Link>
+          <Link href="/search" className="text-brown-light hover:text-brown transition-colors font-medium">Search</Link>
+          <Link href="/coaches/new" className="text-brown-light hover:text-brown transition-colors font-medium">Add a Coach</Link>
           {user ? (
             <>
-              <Link href="/coaches/new" className="text-brown-light hover:text-brown transition-colors">
-                + Add Coach
-              </Link>
-              <Link href="/profile" className="text-brown-light hover:text-brown transition-colors">
-                Profile
-              </Link>
+              <Link href="/profile" className="text-brown-light hover:text-brown transition-colors font-medium">Profile</Link>
               <button onClick={signOut} className="text-brown-light hover:text-brown transition-colors py-1 px-2">
                 Sign Out
               </button>
